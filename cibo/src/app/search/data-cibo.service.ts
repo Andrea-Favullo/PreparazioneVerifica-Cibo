@@ -10,9 +10,10 @@ export class DataCiboService {
   constructor(private http: HttpClient) { }
 
   searchTrack(query: string) {
-    const url = `https://world.openfoodfacts.org/api/v0/product/${query}.json`;
-    //const headers = new HttpHeaders({Authorization: environment.oauthToken});
-    let obsTracks = this.http.get(url, /*{ headers }*/);
+    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${query}&page_size=2&json=true`
+    const headers = new HttpHeaders({UserAgent: `cibo`});
+    headers.append('Access-Control-Allow-Origin', '*');
+    let obsTracks = this.http.get(url, { headers });
     return obsTracks;
     //Ritorno un observable ai componenti che richiedono il servizio
   }
