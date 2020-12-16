@@ -6,15 +6,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class DataCiboService {
 
-  //https://world.openfoodfacts.org/api/v0/product/[barcode].json
   constructor(private http: HttpClient) { }
 
-  searchTrack(query: string) {
+  search(query: string) {
     const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${query}&page_size=2&json=true`
-    const headers = new HttpHeaders({UserAgent: `cibo`});
-    headers.append('Access-Control-Allow-Origin', '*');
-    let obsTracks = this.http.get(url, { headers });
-    return obsTracks;
-    //Ritorno un observable ai componenti che richiedono il servizio
+    return this.http.get(url);
+  }
+
+  getProduct(productID: string){
+    const url = `https://world.openfoodfacts.org/api/v0/product/${productID}`
+    console.log(url)
+    return this.http.get(url);
   }
 }

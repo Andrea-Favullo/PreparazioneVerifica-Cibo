@@ -13,7 +13,7 @@ export class SearchComponent {
   obsTrack: Observable<Object>;
   results: any;
   // faccio iniettare lo spotify service e faccio una ricerca
-  constructor(public spotify: DataCiboService) {}
+  constructor(public cibo: DataCiboService) {}
 
   submit(query: HTMLInputElement): void {
 
@@ -21,7 +21,7 @@ export class SearchComponent {
       return;
     }
     this.query = query.value;
-    this.obsTrack = this.spotify.searchTrack(this.query);
+    this.obsTrack = this.cibo.search(this.query);
     this.obsTrack.subscribe((data) => { this.results = data; console.log(this.results) });
   }
 

@@ -1,1 +1,29 @@
-<p>product works!</p>
+<div *ngIf="product">
+
+  <p>
+    <img src="{{ product.product.image_url }}">
+  </p>
+
+  <p>
+    <strong>Nome:</strong>
+    {{product.product.generic_name}}
+  </p>
+  <p>
+    <strong>Quantità:</strong>
+    {{product.product.quantity}}
+  </p>
+  <p>
+    <strong>Imballaggio:</strong>
+    {{product.product.packaging}}
+  </p>
+  <p>
+    <strong>Produzione:</strong>
+    {{product.product.brands}}
+  </p>
+  <p>
+    <strong>Categorie:</strong>
+    {{product.product.categories}}
+  </p>
+
+  <p><a href (click)="back()">Back</a></p>
+</div>
